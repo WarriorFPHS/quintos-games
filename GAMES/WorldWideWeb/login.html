@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Register Page</title>
+		<style>
+			form label {
+				display: block;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<span id="titlebar-edge-left"></span>
+			<h1 id="title">Michaelsoft Binbows Account</h1>
+			<span id="titlebar-edge-right"></span>
+		</div>
+		<article>
+			<p id="description">Make an account!</p>
+
+			<form id="register" action="#" target="_blank" onsubmit="checkForm();return false">
+				<label
+					>Username(Required)
+					<input autofocus type="text" name="name" placeholder="MichaelXXsoft" required />
+				</label>
+				<label
+					>E-mail(Required)
+					<input type="email" name="email" placeholder="abc@alphabet.com" required />
+				</label>
+				<label
+					>Phone Number(Optional)
+					<input type="tel" name="tel" placeholder="000-000-0000" />
+				</label>
+				<label
+					>Month of Birth(Required)
+					<input type="date" name="birthday" placeholder="January 1,1991" required />
+				</label>
+
+				<label
+					>Gender
+					<select id="dropdown" required>
+						<option value="" selected>Select One</option>
+						<option value="m">Male</option>
+						<option value="f">Female</option>
+						<option value="nb">Other</option>
+						<option value="na">Rather not say</option>
+					</select>
+				</label>
+				<label
+					>Race
+					<select id="dropdown" required>
+						<option value="" selected>Select One</option>
+						<option value="as">Asian</option>
+						<option value="eu">European/White</option>
+						<option value="af">African</option>
+						<option value="hi">Hispanic</option>
+					</select>
+				</label>
+
+				<button id="submit">Create your account!</button>
+			</form>
+		</article>
+		<script src="login.js"></script>
+	</body>
+</html>
