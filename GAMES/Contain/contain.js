@@ -12,29 +12,38 @@ yg....gy
 
 // the \n means new line
 let imgPaddle = spriteArt('.wwwwww.\nwwwwwwww\n' + 'ww....ww\n'.repeat(42) + 'wwwwwwww\n.wwwwww.');
-
-/* PART A1: Make image for the wall */
-let imgWall = spriteArt('u'.repeat(128) + '\n' + 'r'.repeat(128) + 'u'.repeat(128), 2);
-let wallT = new Sprite(imgWall, 0, 15, 'static');
-
-let imgWall2 = spriteArt('u'.repeat(128) + '\n' + 'r'.repeat(128) + 'u'.repeat(128), 2);
-let wallB = new Sprite(imgWall2, 0, height - 15, 'static');
-
+serve();
 // places a ball in center of the screen
-let ball = new Sprite(imgBall);
-ball.x = width / 2;
-ball.y = height / 2;
-ball.velocity.x = -1;
-ball.velocity.y = 1;
-ball.bounciness = 1;
-ball.friction = 0;
-ball.rotationLocked = true;
+async function serve() {
+	let balls = new Group();
+	for (let i = 0; i < 4; i++) {
+		log('3');
+		await delay(1000);
+		log('2');
+		await delay(1000);
+		log('1');
+		await delay(1000);
+		let ball = new Sprite(imgBall);
+		ball.x = width / 2;
+		ball.y = height / 2;
+		let rand = Math.random() * 1.25 + 0.25;
+		let rand2 = Math.random() * 1.25 + 0.25;
+
+		ball.velocity.x = rand;
+		ball.velocity.y = rand2;
+		ball.bounciness = 1;
+		ball.friction = 0;
+		ball.rotationLocked = true;
+		balls.push(ball);
+	}
+}
 
 /* PART A0: create two paddles, place on each end of the screen */
 let paddleL = new Sprite(imgPaddle);
 paddleL.x = 16;
 paddleL.y = height / 2;
 paddleL.static = true;
+paddleL.rotation = -180;
 
 let paddleR = new Sprite(imgPaddle);
 paddleR.x = width - 16 - paddleR.w;
@@ -58,58 +67,19 @@ function draw() {
 	/* PART A1: draw the ball and paddles inside the p5 main draw function */
 	// the `width` and `height` variables are the width and height of the screen
 
-	// check if the ball goes off screen
-	if (ball.x + ball.w <= 0) {
-		ball.x = width / 2;
-		ball.y = height / 2;
-		ball.velocity.x = 1;
-		ball.velocity.y = -1;
-		scoreR = scoreR + 1;
-		displayScore();
-	}
-	if (ball.x >= width) {
-		ball.x = width / 2;
-		ball.y = height / 2;
-		ball.velocity.x = -1;
-		ball.velocity.y = 1;
-		scoreL = scoreL + 1;
-		displayScore();
-	}
-
-	if (keyIsDown('ArrowUp')) {
-		paddleR.y -= 2;
+	if (keyIsDown('ArrowUp') && paddleR.rotation > -90) {
 		paddleR.rotation -= 2;
-		if (paddleR.rotation > -1) {
-			paddleR.x += 1;
-		} else if (paddleR.rotation < 1) {
-			paddleR.x -= 1;
-		}
-	} else if (keyIsDown('ArrowDown')) {
-		paddleR.y += 2;
+	} else if (keyIsDown('ArrowDown') && paddleR.rotation < 90) {
 		paddleR.rotation += 2;
-		if (paddleR.rotation > -1) {
-			paddleR.x -= 1;
-		} else if (paddleR.rotation < 1) {
-			paddleR.x += 1;
-		}
 	}
-	log(paddleR.x);
+	paddleR.x = 88 * cos(paddleR.rotation) + width / 2;
+	paddleR.y = 88 * sin(paddleR.rotation) + height / 2;
 
 	if (keyIsDown('w')) {
-		paddleL.y -= 2;
 		paddleL.rotation += 2;
-		if (paddleL.rotation > 0) {
-			paddleL.x += 1;
-		} else if (paddleL.rotation < 0) {
-			paddleL.x -= 1;
-		}
 	} else if (keyIsDown('s')) {
-		paddleL.y += 2;
 		paddleL.rotation -= 2;
-		if (paddleL.rotation > 0) {
-			paddleL.x -= 1;
-		} else if (paddleL.rotation < 0) {
-			paddleL.x += 1;
-		}
 	}
+	paddleL.x = 88 * cos(paddleL.rotation) + width / 2;
+	paddleL.y = 88 * sin(paddleL.rotation) + height / 2;
 }
