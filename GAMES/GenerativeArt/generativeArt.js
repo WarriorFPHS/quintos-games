@@ -1,5 +1,16 @@
 let time = 0;
-let peice = 4;
+let peice = 0;
+
+for (let i = 0; i < 5; i++) {
+	button(i, 15, i * 3, () => {
+		key = i;
+		peice = i;
+	});
+}
+
+button('pt', 15, 14, () => {
+	key = ' ';
+});
 
 function draw() {
 	background('b');
@@ -8,7 +19,7 @@ function draw() {
 	translate(width / 2, height / 2);
 
 	for (let i = 0; i < 10; i++) {
-		if (key != ' ') {
+		if (key !== ' ') {
 			line(eqX(time - i), eqY(time - i), eqX2(time - i), eqY2(time - i));
 		} else {
 			point(eqX(time - i), eqY(time - i));
