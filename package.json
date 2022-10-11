@@ -6,9 +6,9 @@
 		"java2js": "^1.0.7",
 		"jquery": "^3.6.0",
 		"p5": "^1.4.0",
-		"p5.play": "^3.0.26",
+		"p5.play": "^3.0.93",
 		"planck": "^1.0.0-alpha.4",
-		"quintos": "^3.0.2"
+		"quintos": "^4.0.6"
 	},
 	"license": "GPL-3.0-only",
 	"main": "server.js",
@@ -23,5 +23,5 @@
 		"postversion": "git push",
 		"relink": "npm link ../../pkg/quintos"
 	},
-	"version": "1.1.14"
+	"version": "1.1.15"
 }
