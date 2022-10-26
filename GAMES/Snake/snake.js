@@ -77,6 +77,7 @@ let inputDirection = 'up';
 let ateEgg = false;
 let snakeSpeed = 0.05;
 let reverseMode = false;
+let swapHeadings = true;
 
 function setup() {
 	/* Part A: create the grass field */
@@ -158,7 +159,23 @@ function reverseSnake() {
 	snake[snake.length - 1].y = snake[0].y;
 	snake[0].x = tailX;
 	snake[0].y = tailY;
-	//continuehere
+
+	for (let i = 1; i < floor(snake.length / 2); i++) {
+		let temp = snake[i];
+		snake[i] = snake[snake.length - 1 - i];
+		snake[snake.length - 1 - i] = temp;
+	}
+
+	for (let s of snake) {
+		if (s.heading == 'up') s.heading = 'down';
+		else if (s.heading == 'down') s.heading = 'up';
+		else if (s.heading == 'left') s.heading = 'right';
+		else if (s.heading == 'right') s.heading = 'left';
+	}
+	let temp = snake[0].heading;
+	inputDirection = snake[snake.length - 1].heading;
+	snake[0].heading = inputDirection;
+	snake[snake.length - 1].heading = temp;
 }
 
 function snakeChangeAni(part, type) {
@@ -183,6 +200,8 @@ async function gameOver() {
 	await alert('Game Over! Try Again?');
 	snake.remove();
 	egg.remove();
+	snakeSpeed = 0.05;
+	score = 0;
 	inputDirection = 'up';
 	startNewGame();
 }
@@ -240,7 +259,6 @@ async function moveSnake() {
 		// if snake head
 		if (ateEgg) {
 			i = 0;
-			ateEgg = false;
 		}
 		if (i == 0) {
 			snake[0].heading = inputDirection;
@@ -254,7 +272,9 @@ async function moveSnake() {
 				type = 'eat';
 			}
 		} else {
-			snake[i].heading = snake[i - 1].heading;
+			if (swapHeadings) {
+				snake[i].heading = snake[i - 1].heading;
+			}
 		}
 		if (i == snake.length - 1) {
 			type = 'tail';
@@ -262,24 +282,34 @@ async function moveSnake() {
 
 		snakeChangeAni(snake[i], type);
 
+		log(i, snake[i].heading);
+
 		movements.push(snake[i].move(snake[i].heading, snakeSpeed));
 	}
 
 	await Promise.all(movements);
 	text(score, 17, 0);
+
+	if (!swapHeadings) {
+		swapHeadings = true;
+	}
+	if (ateEgg) {
+		ateEgg = false;
+		if (reverseMode) swapHeadings = false;
+	}
+
 	moveSnake();
 }
 
 function draw() {
 	background(2);
-
-	if (kb.pressed('ArrowUp') && snake[0].heading != 'down') {
+	if (kb.presses('ArrowUp') && snake[0].heading != 'down') {
 		inputDirection = 'up';
-	} else if (kb.pressed('ArrowDown') && snake[0].heading != 'up') {
+	} else if (kb.presses('ArrowDown') && snake[0].heading != 'up') {
 		inputDirection = 'down';
-	} else if (kb.pressed('ArrowLeft') && snake[0].heading != 'right') {
+	} else if (kb.presses('ArrowLeft') && snake[0].heading != 'right') {
 		inputDirection = 'left';
-	} else if (kb.pressed('ArrowRight') && snake[0].heading != 'left') {
+	} else if (kb.presses('ArrowRight') && snake[0].heading != 'left') {
 		inputDirection = 'right';
 	}
 }
