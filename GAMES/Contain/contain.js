@@ -22,7 +22,7 @@ async function serve() {
 		log('1');
 		await delay(1000);
 		if (i == 0) {
-			text(' '.repeat(30), 0);
+			txt(' '.repeat(30), 0);
 		}
 		let ball = new Sprite(imgBall);
 		ball.x = width / 2;
@@ -76,7 +76,7 @@ async function timer() {
 	while (ballsOffScreen < 3) {
 		await delay(1000);
 		time++;
-		text(time, 3, 16);
+		txt(time, 3, 16);
 	}
 	await alert('Game Over! You must contain at least two balls.\n\nScore:' + time + '\n\nPress enter to restart.', 2, 0);
 	ballsOffScreen = 0;

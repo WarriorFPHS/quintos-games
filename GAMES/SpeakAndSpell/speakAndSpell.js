@@ -81,7 +81,7 @@ async function onSubmit(value) {
 		wordsDone++;
 		if (wordsDone >= 10) {
 			erase();
-			text(score + '/10', 0, 0);
+			txt(score + '/10', 0, 0);
 			await play(speechSounds['here_is_your_score']);
 
 			// eight of ten
@@ -132,7 +132,7 @@ async function onSubmit(value) {
 			wordsDone++;
 
 			erase();
-			text(word, 0, 0);
+			txt(word, 0, 0);
 
 			let spelling = word.toUpperCase().split('');
 			for (let letter of spelling) {

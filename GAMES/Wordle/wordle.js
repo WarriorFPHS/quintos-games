@@ -40,7 +40,7 @@ function displayBoxes() {
 		for (let col = 0; col < 5; col++) {
 			if (guess) {
 				// display the letter
-				text(guess[col], row * 3 + 3, col * 3 + 3);
+				txt(guess[col], row * 3 + 3, col * 3 + 3);
 
 				// check if the letter is correct or in the word or not
 				if (guess[col] == wordle[col]) {
@@ -61,13 +61,13 @@ function displayBoxes() {
 function displayInfo() {
 	let row = 10;
 	textRect(row, 20, 3, 3, 'solid');
-	text('letter is not found in word', row, 24);
+	txt('letter is not found in word', row, 24);
 	row += 3;
 	textRect(row, 20, 3, 3, 'outline');
-	text('letter is in the word', row, 24);
+	txt('letter is in the word', row, 24);
 	row += 3;
 	textRect(row, 20, 3, 3, 'dashed');
-	text('letter is in the correct position', row, 24, 14);
+	txt('letter is in the correct position', row, 24, 14);
 }
 
 async function startGame() {
@@ -82,7 +82,7 @@ async function startGame() {
 	while (true) {
 		erase();
 		displayBoxes();
-		text(alphabet, 21, 2);
+		txt(alphabet, 21, 2);
 		if (guess == wordle) {
 			await alert('You won!', 3, 18, 20);
 			startGame();

@@ -47,8 +47,8 @@ let scoreL = 0;
 let scoreR = 0;
 
 function displayScore() {
-	text(scoreL, 3, 13);
-	text(scoreR, 3, 19);
+	txt(scoreL, 3, 13);
+	txt(scoreR, 3, 19);
 }
 
 displayScore();

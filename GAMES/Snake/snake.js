@@ -288,7 +288,7 @@ async function moveSnake() {
 	}
 
 	await Promise.all(movements);
-	text(score, 17, 0);
+	txt(score, 17, 0);
 
 	if (!swapHeadings) {
 		swapHeadings = true;

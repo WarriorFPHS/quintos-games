@@ -10,7 +10,7 @@ let count;
 async function setupGame() {
 	let filePath = QuintOS.dir + '/phrases.txt';
 	let data = await fetch(filePath);
-	let phrasesList = await data.text();
+	let phrasesList = await data.txt();
 	phrases = phrasesList.split('\r\n');
 	newGame();
 }
@@ -57,7 +57,7 @@ async function addLetter() {
 		letter = words[i][j];
 	}
 	log(letter, j);
-	text(letter, i * 4 + 3, j * 3 + 3);
+	txt(letter, i * 4 + 3, j * 3 + 3);
 
 	// replace letter with a space in the array of words (in the phrase)
 	let word = words[i];
@@ -77,7 +77,7 @@ async function addLetter() {
 	addLetter();
 }
 
-text('Score:' + score, 14, 2);
+txt('Score:' + score, 14, 2);
 let bigBuzzer = `
 |⎺|__  _   _ ___________ _ __
 | '_ \\| | | |_  /_  / _ \\ '__|
@@ -91,11 +91,11 @@ async function buzz() {
 		await alert('You got it!', 18, 2);
 
 		score = score + (le - count);
-		text('Score:' + score + '      ', 14, 2);
+		txt('Score:' + score + '      ', 14, 2);
 		newGame();
 	} else {
 		score = score - 1;
-		text('Score:' + score + '      ', 14, 2);
+		txt('Score:' + score + '      ', 14, 2);
 		stopAddingLetters = false;
 		addLetter();
 	}

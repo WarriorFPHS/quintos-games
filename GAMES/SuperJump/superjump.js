@@ -1,9 +1,18 @@
 let player, platforms;
 
+let isPlaying = false;
+
+function preload() {
+	jumpSound = loadSound('sounds/retro_jump_bounce_01.wav');
+	jumpSound.setVolume(0.1);
+	superJumpSound = loadSound('sounds/retro_jump_bounce_08.wav');
+	superJumpSound.setVolume(0.1);
+}
+
 function setup() {
 	world.gravity.y = 10;
 
-	player = new Sprite(160, 200, 20, 'static');
+	player = new Sprite(160, 200, 20, 'k');
 	player.color = 'yellow';
 
 	platforms = new Group();
@@ -15,33 +24,67 @@ function setup() {
 	// new platforms.Sprite(160, 300);
 	// new platforms.Sprite(20, 200);
 	// new platforms.Sprite(80, 250);
-	for (let i = 0; i < 3; i++) {
+
+	// strands of platforms
+	for (let i = 0; i < 4; i++) {
 		let x = 110 * i;
 		let y = 300;
-		for (let j = 0; j < 50; j++) {
+
+		// make platforms
+		let platformAmount = 50;
+		if (i == 1) {
+			platformAmount = 40;
+		}
+		if (i == 2) {
+			platformAmount = 30;
+		}
+		if (i == 3) {
+			platformAmount = 20;
+		}
+		for (let j = 0; j < platformAmount; j++) {
 			new platforms.Sprite(x, y);
-			x += random(-50, 50);
+
+			if (j < 10) {
+				x += random(-50, 50);
+			} else {
+				x += random(-75, 75);
+			}
+
 			if (x < 0) {
 				x = 0;
 			}
 			if (x > 320) {
 				x = 320;
 			}
-			y -= 80;
+
+			if (j < 10) {
+				y -= random(30, 70);
+			} else {
+				y -= random(70, 100);
+			}
 		}
 	}
 }
 
+/*
+function processMouseMove(event) {
+	if (isPlaying) {
+		let x = player.x + event.movementX;
+		log(x);
+		player.moveTowards(x, null, 0.05);
+	}
+}
+
+document.addEventListener('mousemove', processMouseMove);
+*/
+
 function draw() {
 	clear();
 
-	if (mouse.presses()) {
-		player.collider = 'dynamic';
-	}
-	player.x = mouse.x;
+	player.moveTowards(mouse.x, null, 0.05);
 
 	for (let platform of platforms) {
-		if (player.y < platform.y) {
+		if (player.y + player.h / 2 < platform.y - platform.h / 2) {
 			platform.collider = 'static';
 		}
 		if (player.y > platform.y) {
@@ -49,11 +92,43 @@ function draw() {
 		}
 	}
 
-	log(player.vel.y);
-
 	// player collides with platform and is falling
-	if (player.collided(platforms) && player.vel.y >= -0.5) {
-		player.vel.y = -6; // then jump
+	if (player.collides(platforms) && player.vel.y > -1.7) {
+		// if the player pressed the mouse on the same frame
+		player.vel.y = -6;
+		player.color = 'yellow';
+		jumpSound.play();
+	}
+
+	if (player.colliding(platforms) < 55 && player.colliding(platforms) > 0) {
+		if (mouse.presses()) {
+			// then do a super jump!
+			player.vel.y = -7;
+			player.color = 'orange';
+			superJumpSound.play();
+		}
+	}
+
+	if (player.y > camera.y + 230) {
+		txt('Game Over', 6, 9);
+
+		isPlaying = false;
+
+		player.collider = 'k';
+		player.vel.x = 0;
+		player.vel.y = 0;
+
+		//document.exitPointerLock();
+
+		if (mouse.presses()) {
+			player.y = 200;
+			camera.y = 200;
+		}
+	} else if (!isPlaying && mouse.presses()) {
+		erase();
+		player.collider = 'dynamic';
+		// canvas.requestPointerLock();
+		isPlaying = true;
 	}
 
 	if (player.y < camera.y) {

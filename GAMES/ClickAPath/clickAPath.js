@@ -67,7 +67,7 @@ Try to go to sleep`;
 		button(bed, 5, 55, btnClick3);
 
 		msg = "It's a dark October night. You're staying up late coding but suddenly you hear a knock at your door!";
-		text(msg, 2, 2);
+		txt(msg, 2, 2);
 		opt = [1, 2, 3];
 	} else if (choice == 1) {
 		/* PART A1: continue the story */

@@ -44,13 +44,13 @@ async function start() {
 				}
 			}
 		}
-		text(decodeCaesarCipher(msg, shifted));
+		txt(decodeCaesarCipher(msg, shifted));
 	} else {
 		await alert('We will decode the message for you.');
 		for (let i = 1; i < 26; i++) {
 			button(decodeCaesarCipher(msg.slice(0, 72) + '...', i), i + 1, 2, () => {
 				erase();
-				text(decodeCaesarCipher(msg, i), 2);
+				txt(decodeCaesarCipher(msg, i), 2);
 			});
 		}
 	}

@@ -17,7 +17,7 @@ TTTTT  OOO   EEEE
   T   O   O  E
   T    OOO   EEEE`.slice(1);
 
-text(title, 5, 6);
+txt(title, 5, 6);
 
 const bigSpace = '        \n'.repeat(7);
 
@@ -49,11 +49,11 @@ let board = [
 ];
 
 /* PART A: finish the grid of 9x8 spaces */
-text('─'.repeat(26), gridRow + 7, gridCol);
-text('─'.repeat(26), gridRow + 15, gridCol); // draw another horizontal line
+txt('─'.repeat(26), gridRow + 7, gridCol);
+txt('─'.repeat(26), gridRow + 15, gridCol); // draw another horizontal line
 
-text('│\n'.repeat(23), gridRow, gridCol + 8);
-text('│\n'.repeat(23), gridRow, gridCol + 17); // draw another vertical line
+txt('│\n'.repeat(23), gridRow, gridCol + 8);
+txt('│\n'.repeat(23), gridRow, gridCol + 17); // draw another vertical line
 
 /* PART A: Make the buttons in the grid */
 // note the intervals! row += 8 and col += 9
@@ -64,7 +64,7 @@ let aiBattle = false;
 let turnNum = 1;
 
 function displayScore() {
-	text('Score X: ' + x_score + '\nScore O: ' + o_score, 1, 58);
+	txt('Score X: ' + x_score + '\nScore O: ' + o_score, 1, 58);
 }
 displayScore();
 
@@ -141,13 +141,13 @@ let turnX = true;
 function randomStart() {
 	if (Math.random() < 0.5) {
 		turnX = true;
-		text('Turn: X', 1, 50);
+		txt('Turn: X', 1, 50);
 		if (aiBattle) {
 			aiTakeTurn();
 		}
 	} else {
 		turnX = false;
-		text('Turn: O', 1, 50);
+		txt('Turn: O', 1, 50);
 		if (onePlayer || aiBattle) {
 			aiTakeTurn();
 		}
@@ -166,17 +166,17 @@ async function takeTurn(row, col) {
 	}
 	let mark;
 	if (turnX) {
-		text(bigX, gridRow + row * 8, gridCol + col * 9);
+		txt(bigX, gridRow + row * 8, gridCol + col * 9);
 		board[row][col] = 'x';
 		mark = 'x';
 
-		text('Turn: O', 1, 50);
+		txt('Turn: O', 1, 50);
 	} else {
-		text(bigO, gridRow + row * 8, gridCol + col * 9);
+		txt(bigO, gridRow + row * 8, gridCol + col * 9);
 		board[row][col] = 'o';
 		mark = 'o';
 
-		text('Turn: X', 1, 50);
+		txt('Turn: X', 1, 50);
 	}
 
 	turnNum++;
@@ -391,7 +391,7 @@ function reset() {
 	];
 	for (let i = 0; i < 3; i++) {
 		for (let j = 0; j < 3; j++) {
-			text(bigSpace, gridRow + i * 8, gridCol + j * 9);
+			txt(bigSpace, gridRow + i * 8, gridCol + j * 9);
 		}
 	}
 	turnNum = 1;

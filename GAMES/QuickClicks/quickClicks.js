@@ -77,9 +77,9 @@ async function clickResponse() {
 async function drawBackground() {
 	for (let row = 1; row < 29; row++) {
 		if (row % 2 == 0) {
-			await text('v^'.repeat(39), row, 1);
+			await txt('v^'.repeat(39), row, 1);
 		} else {
-			await text('^v'.repeat(39), row, 1);
+			await txt('^v'.repeat(39), row, 1);
 		}
 	}
 }
