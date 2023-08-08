@@ -1,0 +1,17 @@
+[
+	{
+		"id": "m1",
+		"name": "John Smith",
+		"rented": ["01", "03", "07"]
+	},
+	{
+		"id": "m2",
+		"name": "Jane Doe",
+		"rented": ["02", "05", "09"]
+	},
+	{
+		"id": "m3",
+		"name": "Bob Johnson",
+		"rented": ["04", "06", "10"]
+	}
+]

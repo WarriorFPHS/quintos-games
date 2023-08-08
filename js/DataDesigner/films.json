@@ -1,0 +1,86 @@
+[
+	{
+		"id": "02",
+		"title": "Titanic",
+		"genre": "Romance",
+		"rating": "4.5",
+		"description": "A tale of two lovers on a sinking ship."
+	},
+	{
+		"id": "31",
+		"title": "Harry Potter and the Prisoner of Azkaban",
+		"genre": "adventure",
+		"rating": "4",
+		"description": "The next addition to the Harry Potter series in the Wizarding World"
+	},
+	{
+		"id": "01",
+		"title": "The Godfather",
+		"genre": "Crime, Drama",
+		"rating": 5,
+		"description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
+	},
+	{
+		"id": "02",
+		"title": "Star Wars",
+		"genre": "Sci-Fi, Action",
+		"rating": 4.5,
+		"description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee, and two droids to save the galaxy from the Empire's world-destroying battle station."
+	},
+	{
+		"id": "03",
+		"title": "The Shawshank Redemption",
+		"genre": "Drama",
+		"rating": 4.8,
+		"description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
+	},
+	{
+		"id": "04",
+		"title": "The Lord of the Rings: The Fellowship of the Ring",
+		"genre": "Fantasy, Adventure",
+		"rating": 4.7,
+		"description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron."
+	},
+	{
+		"id": "05",
+		"title": "Inception",
+		"genre": "Sci-Fi, Action",
+		"rating": 4.5,
+		"description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
+	},
+	{
+		"id": "06",
+		"title": "The Matrix",
+		"genre": "Sci-Fi, Action",
+		"rating": 4.5,
+		"description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers."
+	},
+	{
+		"id": "07",
+		"title": "Forrest Gump",
+		"genre": "Drama, Romance",
+		"rating": 4.6,
+		"description": "The presidencies of Kennedy and Johnson, the Vietnam War, and the Watergate scandal shape the life of a naive young man from Alabama."
+	},
+	{
+		"id": "08",
+		"title": "The Silence of the Lambs",
+		"genre": "Thriller, Crime",
+		"rating": 4.6,
+		"description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims."
+	},
+	{
+		"id": "09",
+		"title": "Pulp Fiction",
+		"genre": "Crime, Drama",
+		"rating": 4.5,
+		"description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
+	},
+	{
+		"id": "10",
+		"title": "The Dark Knight",
+		"genre": "Action, Crime",
+		"rating": 4.8,
+		"description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice."
+	}
+]
