@@ -1,2 +1,2 @@
 QuintOS.user = 'WarriorFPHS';
-QuintOS.game = 'DataDesigner';
+QuintOS.game = 'Sokoban';

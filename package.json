@@ -3,6 +3,7 @@
 	"name": "quintos-games",
 	"description": "Learn to code by making games in JavaScript using QuintOS!",
 	"dependencies": {
+		"@types/p5": "^1.7.0",
 		"java2js": "^1.0.7",
 		"jquery": "^3.6.0",
 		"p5": "^1.4.0",
@@ -22,5 +23,5 @@
 		"postversion": "git push",
 		"relink": "npm link ../../pkg/quintos"
 	},
-	"version": "1.1.20"
+	"version": "1.1.21"
 }
